@@ -57,3 +57,9 @@ Your data remains completely private and is never transmitted outside your brows
 **Made with ❤️ for Microsoft Edge users who love organised favorites**
 
 > Transform your new tab experience - install New Tab with Favorites today!
+
+---
+
+## 🤖 Purpose (for Copilot)
+
+This extension is designed to replace the default new tab page in Microsoft Edge (and Chrome) with a custom page that displays the user's bookmarks (favorites), especially those from the Favorites Bar, in a visually organized, column-based layout. It uses the browser's Bookmarks API to read and render the user's favorites, preserving folder structure and favicons, and provides instant navigation to bookmarked sites. The extension is built with vanilla JavaScript and jQuery, and aims for a clean, modern, and responsive user interface.
