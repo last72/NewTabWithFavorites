@@ -1,13 +1,14 @@
 {
-   "chrome_url_overrides": {
-      "newtab": "newtab.html"
-   },
+   "manifest_version": 3,
+   "name": "New Tab with Favorites",
+   "version": "0.1",
    "description": "Displays all favorites in the new tab page",
    "icons": {
       "128": "icon128.png"
    },
-   "manifest_version": 2,
-   "name": "New Tab with Favorites",
+   "chrome_url_overrides": {
+      "newtab": "newtab.html"
+   },
    "permissions": [ "bookmarks" ],
-   "version": "1.0.0"
+   "host_permissions": []
 }
