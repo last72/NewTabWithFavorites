@@ -1,0 +1,15 @@
+{
+   "chrome_url_overrides": {
+      "newtab": "newtab.html"
+   },
+   "description": "Displays all bookmarks in the new tab page",
+   "icons": {
+      "128": "icon128.png"
+   },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAzhzWdeAigqAv4AbVYxTDz1f6P8bwgklpXA+K5qF5bnIh+5AtKaByny1+wU97nd/Jh5vOhZp8q1Ud2hJv1yOr6EyL/r+AeboZ4Gd9wn7HzIn5Rh/kzrtjtRgJgahTgX1Htqb5z9tcJxaiNqlRcgKHppKZhJglmcJZIlL8ybjo590DGGFxPW23rbpJlgDZVlxXeVq2+RF5gCoRX+CkiCLzWo4LiBpot3IdZU5mTsL6ui0AdZ8yN2uY/kF87I9PsHFQcWjWgsezgjS0bCyIKuT6gQowRHnrkkRJgwBhpUT8oVIim/pVuCJtAzQCygOGUfsAT/IdrWD+Rc7J0nekjRusSQIDAQAB",
+   "manifest_version": 2,
+   "name": "New Tab with Bookmarks",
+   "permissions": [ "bookmarks", "chrome://favicon/" ],
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "1.1.0"
+}
