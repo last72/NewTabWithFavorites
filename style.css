@@ -16,12 +16,11 @@ body > ul > li {
 	width: 270px;
 	height: 400px;
 	overflow-x: hidden;
-	overflow-y: scroll;
 	margin: 4px 5px;
-	padding: 3px 5px 0px 16px;
+	padding: 3px 5px 0px 8px; /* Reduced left padding */
 	border: 1px solid #d0d0d0;
 	border-radius: 4px;
-	background-color: #fafafa;
+	background-color: white; /* Set to white to match outside background */
 }
 body > ul > li ul {
 	margin-left: 20px;
@@ -29,14 +28,15 @@ body > ul > li ul {
 ul li h2 {
 	font-size: 12pt;
 	font-weight: normal;
-	margin-left: -9px;
-	padding-left: 18px;
-	padding-top: 8px;
-	padding-bottom: 4px;
+	margin-left: -4px; /* Reduced margin */
+	padding-left: 20px; /* Slightly more for icon */
+	padding-top: 4px; /* Less top padding */
+	padding-bottom: 2px; /* Less bottom padding */
+	line-height: 20px; /* Align icon and text */
 	white-space: nowrap;
 	background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>');
 	background-repeat: no-repeat;
-	background-position: left center;
+	background-position: left 2px center; /* Adjust icon vertical alignment */
 	color: #333;
 }
 ul li a {
