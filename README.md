@@ -17,7 +17,7 @@ The extension displays your favorites in organized columns, making it easy to fi
 ## 🚀 Installation
 
 ### From Microsoft Edge Add-ons Store
-1. Visit the [Microsoft Edge Add-ons store](#) *(coming soon)*
+1. Visit the [Microsoft Edge Add-ons store](https://microsoftedge.microsoft.com/addons/detail/new-tab-with-favorites/dbkckipnlicajbelchlbcjfaikaikaod)
 2. Click "Get" to install the extension
 3. Open a new tab to see your favorites
 
