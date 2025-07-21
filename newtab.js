@@ -90,7 +90,20 @@ function ProcessBookmarkNode(node, dom)
         {
                 var faviconUrl = GetFaviconUrl(node.url);
                 var displayText = node.title ? EscapeHtml(ShortenString(node.title, 30)) : '';
-                dom.html += '<li><a href="' + EscapeHtml(node.url) + '" title="' + EscapeHtml(node.url) + '"><img src="' + faviconUrl + '" onerror="this.style.display=\'none\'" />' + displayText + '</a></li>';
+                // Add a unique id to the img for later reference
+                var imgId = 'favicon-' + Math.random().toString(36).substr(2, 9);
+                dom.html += `<li><a href="${EscapeHtml(node.url)}" title="${EscapeHtml(node.url)}"><img id="${imgId}" src="${faviconUrl}" width="16" height="16" />${displayText}</a></li>`;
+                // After DOM insertion, compare favicon with placeholder and swap if needed
+                setTimeout(() => {
+                    const img = document.getElementById(imgId);
+                    if (img) {
+                        isPlaceholderFavicon(img, function(isPlaceholder) {
+                            if (isPlaceholder) {
+                                img.src = 'https://www.google.com/s2/favicons?domain=' + encodeURIComponent(new URL(node.url).hostname) + '&sz=32';
+                            }
+                        });
+                    }
+                }, 100);
         }
 }
 
@@ -115,12 +128,28 @@ function EscapeHtml(text)
 
 function GetFaviconUrl(url)
 {
-        try {
-                var domain = new URL(url).hostname;
-                // Use Google's favicon service as a fallback that works across browsers
-                return 'https://www.google.com/s2/favicons?domain=' + encodeURIComponent(domain) + '&sz=16';
-        } catch (e) {
-                // Fallback to a generic icon
-                return 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>';
-        }
+    return `chrome-extension://${chrome.runtime.id}/_favicon/?pageUrl=${encodeURIComponent(url)}&size=32`;
+}
+
+// Utility to compare favicon with placeholder
+function isPlaceholderFavicon(faviconImg, callback) {
+    const placeholderImg = new Image();
+    placeholderImg.src = 'assets/placeholder.bmp';
+    placeholderImg.onload = function() {
+        // Create canvases
+        const w = faviconImg.naturalWidth, h = faviconImg.naturalHeight;
+        if (!w || !h) return callback(false); // Image not loaded
+        const canvas1 = document.createElement('canvas');
+        const canvas2 = document.createElement('canvas');
+        canvas1.width = canvas2.width = w;
+        canvas1.height = canvas2.height = h;
+        const ctx1 = canvas1.getContext('2d');
+        const ctx2 = canvas2.getContext('2d');
+        ctx1.drawImage(faviconImg, 0, 0, w, h);
+        ctx2.drawImage(placeholderImg, 0, 0, w, h);
+        // Compare data URLs
+        const data1 = canvas1.toDataURL();
+        const data2 = canvas2.toDataURL();
+        callback(data1 === data2);
+    };
 }
