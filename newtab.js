@@ -89,7 +89,8 @@ function ProcessBookmarkNode(node, dom)
         if (node.url)
         {
                 var faviconUrl = GetFaviconUrl(node.url);
-                dom.html += '<li><a href="' + EscapeHtml(node.url) + '" title="' + EscapeHtml(node.url) + '"><img src="' + faviconUrl + '" onerror="this.style.display=\'none\'" />' + EscapeHtml(ShortenString(node.title || node.url, 30)) + '</a></li>';
+                var displayText = node.title ? EscapeHtml(ShortenString(node.title, 30)) : '';
+                dom.html += '<li><a href="' + EscapeHtml(node.url) + '" title="' + EscapeHtml(node.url) + '"><img src="' + faviconUrl + '" onerror="this.style.display=\'none\'" />' + displayText + '</a></li>';
         }
 }
 
