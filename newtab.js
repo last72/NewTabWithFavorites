@@ -134,7 +134,7 @@ function GetFaviconUrl(url)
 // Utility to compare favicon with placeholder
 function isPlaceholderFavicon(faviconImg, callback) {
     const placeholderImg = new Image();
-    placeholderImg.src = 'assets/placeholder.bmp';
+    placeholderImg.src = 'assets/placeholderFavicon.bmp';
     placeholderImg.onload = function() {
         // Create canvases
         const w = faviconImg.naturalWidth, h = faviconImg.naturalHeight;
